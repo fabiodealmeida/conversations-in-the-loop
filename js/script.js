@@ -48,6 +48,9 @@ function hideAll() {
         divs[i].addClass('hide');
         divs[i].find('div').hide();
         divs[i].find('button').removeClass('no-underline');
+
+        let video = divs[i].find('.player')[0];
+        if(video!=undefined){ video.pause(); }
     }
 
 }
@@ -61,7 +64,10 @@ $("#btnLoop").click(function(event){
 $(".btnTitle").click(function(event){
     $(this).parent('div').find('div').toggle();
     $(this).parent('div').find('button').toggleClass('no-underline')
-
+    
+    //$(this).parent('div').find('.player')[0].pause();
+    let video = $(this).parent('div').find('.player')[0];
+    video[video.paused ? 'play' : 'pause']();
 });
 
 $("#btnAbout").click(function(event){
@@ -81,3 +87,4 @@ $("#btnCloseAbout").click(function(event){
 $("#btnCloseMenu").click(function(event){
     $("#sectionMenu").addClass("hide");
 });
+
